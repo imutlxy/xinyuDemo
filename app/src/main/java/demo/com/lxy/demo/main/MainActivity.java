@@ -1,7 +1,7 @@
 package demo.com.lxy.demo.main;
 
 import android.os.Bundle;
-import android.util.SparseArray;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -9,12 +9,7 @@ import android.widget.ListView;
 import com.loopj.android.http.RequestParams;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Vector;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -58,13 +53,13 @@ public class MainActivity extends BaseActivity {
         initData();
         listView.setAdapter(adapter);
 
-//        search.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getUserList(userNameEt.getText().toString().trim());
-//            }
-//        });
-        getUserList("a");
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getUserList(userNameEt.getText().toString().trim());
+                Utils.hideSoftKeyBoard(mActivity,userNameEt);
+            }
+        });
 
     }
 
@@ -78,12 +73,14 @@ public class MainActivity extends BaseActivity {
         String url = Constants.BASE_URL + "search/users";
         RequestParams params = new RequestParams();
         params.put("q", userName);
+        mLog("url:" + url);
         DemoHttpClient.get(mActivity, url, params, new DemoHttpHandler() {
             @Override
             public void onSuccess(String responseString) {
-//                mLog("responseString:" + responseString);
+                mLog("responseString:" + responseString);
                 GithubUser githubUser = mActivity.decodeJson(GithubUser.class, responseString);
 
+                users.clear();
                 List<GithubUserDetail> userDetails = githubUser.get_userDetails();
                 if (Utils.isListNotNull(userDetails)) {
                     for (int i = 0; i < userDetails.size(); i++) {

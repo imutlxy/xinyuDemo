@@ -1,5 +1,9 @@
 package demo.com.lxy.demo.util;
 
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -52,4 +56,22 @@ public class Utils {
 
         return maxString;
     }
+
+    /**
+     * 显示软键盘
+     */
+    public static void showSoftKeyBoard(BaseActivity mActivity, EditText editText) {
+        editText.requestFocus();
+        InputMethodManager imm = (InputMethodManager) mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    /**
+     * 隐藏软键盘
+     */
+    public static void hideSoftKeyBoard(BaseActivity mActivity, EditText editText) {
+        InputMethodManager imm = (InputMethodManager) mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+    }
+
 }
