@@ -1,10 +1,18 @@
 package demo.com.lxy.demo.adapter;
 
+import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.generic.GenericDraweeHierarchy;
+import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
+import com.facebook.drawee.generic.RoundingParams;
+import com.facebook.drawee.interfaces.DraweeController;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
 
@@ -54,8 +62,7 @@ public class UserListAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.userName = (TextView) view.findViewById(R.id.user_name);
             viewHolder.language = (TextView) view.findViewById(R.id.language);
-
-//            viewHolder.userAvatar = (SimpleDraweeView) view.findViewById(R.id.user_avatar);
+            viewHolder.userAvatar = (SimpleDraweeView) view.findViewById(R.id.user_avatar);
 
             view.setTag(viewHolder);
         } else {
@@ -70,7 +77,7 @@ public class UserListAdapter extends BaseAdapter {
         } else {
             viewHolder.language.setText(user.getLanguage());
         }
-//        setUserAvatar(viewHolder.userAvatar,user.getUserAvatarUrl());
+        setUserAvatar(viewHolder.userAvatar, user.getUserAvatarUrl());
 
         return view;
     }
@@ -78,27 +85,27 @@ public class UserListAdapter extends BaseAdapter {
     static class ViewHolder {
         public TextView userName;
         public TextView language;
-//        public SimpleDraweeView userAvatar;
+        public SimpleDraweeView userAvatar;
     }
 
-//    private void setUserAvatar(SimpleDraweeView userAvatar,String avatarUrl){
-//        Uri uri = Uri.parse(avatarUrl);
-//        userAvatar.setImageURI(uri);
-//
-//        //获取GenericDraweeHierarchy对象
-//        GenericDraweeHierarchy hierarchy = GenericDraweeHierarchyBuilder.newInstance(getResources())
-//                //设置圆形圆角参数；RoundingParams.asCircle()是将图像设置成圆形
-//                .setRoundingParams(RoundingParams.asCircle())
-//                        //设置淡入淡出动画持续时间(单位：毫秒ms)
-////                    .setFadeDuration(5000)
-//                        //构建
-//                .build();
-//        userAvatar.setHierarchy(hierarchy);
-//
-//        DraweeController draweeController = Fresco.newDraweeControllerBuilder()
-//                .setUri(uri)
-//                .setTapToRetryEnabled(true)
-//                .build();
-//        userAvatar.setController(draweeController);
-//    }
+    private void setUserAvatar(SimpleDraweeView userAvatar, String avatarUrl) {
+        Uri uri = Uri.parse(avatarUrl);
+        userAvatar.setImageURI(uri);
+
+        //获取GenericDraweeHierarchy对象
+        GenericDraweeHierarchy hierarchy = GenericDraweeHierarchyBuilder.newInstance(mActivity.getResources())
+                //设置圆形圆角参数；RoundingParams.asCircle()是将图像设置成圆形
+                .setRoundingParams(RoundingParams.asCircle())
+                        //设置淡入淡出动画持续时间(单位：毫秒ms)
+//                    .setFadeDuration(5000)
+                        //构建
+                .build();
+        userAvatar.setHierarchy(hierarchy);
+
+        DraweeController draweeController = Fresco.newDraweeControllerBuilder()
+                .setUri(uri)
+                .setTapToRetryEnabled(true)
+                .build();
+        userAvatar.setController(draweeController);
+    }
 }

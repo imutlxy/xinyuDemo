@@ -9,6 +9,6 @@
     <string name="user_name">用户名</string>
     <string name="language">偏好语言</string>
     <string name="ok">确定</string>
-    <string name="hint_text">请输入用户名来查询用户信息</string>
+    <string name="hint_text">请输入用户名来查询用户信息:</string>
 
 </resources>

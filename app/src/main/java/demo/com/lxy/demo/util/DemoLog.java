@@ -10,7 +10,7 @@ public class DemoLog {
     private static final int DIVIDER_NUM = 100;
 
     public static void d(String text) {
-        DemoLog.d("demo", text);
+        DemoLog.d("xinyu", text);
     }
 
     public static void d(String tag, String text) {

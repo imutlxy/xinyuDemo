@@ -47,7 +47,8 @@ public class ParserJson<T> {
                     list.add(bean);
                 }
             } catch (Exception e) {
-                Log.e("ParserJson", e.toString());
+                Log.e("ParserJson","解析json列表出错");
+//                Log.e("ParserJson", e.toString());
             }
         }
         return list;

@@ -4,9 +4,9 @@ package demo.com.lxy.demo.moduel;
  * Created by lxy on 16-12-6.
  */
 public class User {
-    private String userName;
-    private String userAvatarUrl;
-    private String language;
+    private String userName;//用户名,login
+    private String userAvatarUrl;//用户头像地址
+    private String language;//用户最常用编程语言
 
     public String getUserName() {
         return userName;

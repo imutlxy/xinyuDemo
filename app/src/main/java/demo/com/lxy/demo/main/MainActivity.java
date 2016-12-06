@@ -1,6 +1,7 @@
 package demo.com.lxy.demo.main;
 
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -10,8 +11,10 @@ import com.loopj.android.http.RequestParams;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,6 +27,7 @@ import demo.com.lxy.demo.moduel.User;
 import demo.com.lxy.demo.util.BaseActivity;
 import demo.com.lxy.demo.util.Constants;
 import demo.com.lxy.demo.util.ParserJson;
+import demo.com.lxy.demo.util.Utils;
 import demo.com.lxy.demo.util.http.DemoHttpClient;
 import demo.com.lxy.demo.util.http.DemoHttpHandler;
 
@@ -60,7 +64,7 @@ public class MainActivity extends BaseActivity {
 //                getUserList(userNameEt.getText().toString().trim());
 //            }
 //        });
-        getUserList("imutlxy");
+        getUserList("a");
 
     }
 
@@ -80,17 +84,14 @@ public class MainActivity extends BaseActivity {
 //                mLog("responseString:" + responseString);
                 GithubUser githubUser = mActivity.decodeJson(GithubUser.class, responseString);
 
-//                mLog("getTotal_count=" + githubUser.getTotal_count() + ";size=" + githubUser.get_userDetails().size());
-
                 List<GithubUserDetail> userDetails = githubUser.get_userDetails();
-                if (userDetails != null && userDetails.size() > 0) {
+                if (Utils.isListNotNull(userDetails)) {
                     for (int i = 0; i < userDetails.size(); i++) {
                         GithubUserDetail userDetail = userDetails.get(i);
 
                         User user = new User();
                         user.setUserName(userDetail.getLogin());
                         user.setUserAvatarUrl(userDetail.getAvatar_url());
-//                        user.setLanguage();
                         users.add(user);
 
                         getUserRepos(userDetail.getLogin(), user, i);
@@ -102,7 +103,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onFailure(int response_status) {
-//                mLog("onFailure,response_status=" + response_status);
+                mLog("onFailure,response_status=" + response_status);
             }
         });
     }
@@ -114,17 +115,17 @@ public class MainActivity extends BaseActivity {
         DemoHttpClient.get(mActivity, url, null, new DemoHttpHandler() {
             @Override
             public void onSuccess(String responseString) {
-                mLog("responseString:" + responseString);
+                mLog("responseString:onSuccess");
 
+                //解析数组
                 ParserJson<EachRepos> parserJson = new ParserJson<>();
                 List<EachRepos> reposList = parserJson.getBeanList(responseString, EachRepos.class);
-                mLog("reposList.size=" + reposList.size());
 
-                //todo 获取用户最常用语言
-
-                String language = "c++,java";
+                //获取用户使用频率最高的编程语言
+                String language = getFrequencyLanguage(reposList);
                 user.setLanguage(language);
                 users.set(position, user);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -134,60 +135,16 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    //获取用户最常用语言
-    private String getLanguage(List<EachRepos> reposList) {
+    //获取用户使用频率最高的编程语言
+    private String getFrequencyLanguage(List<EachRepos> reposList) {
         String[] languageArr = new String[reposList.size()];
         for (int i = 0; i < reposList.size(); i++) {
             EachRepos eachRepos = reposList.get(i);
             languageArr[i] = eachRepos.getLanguage();
         }
 
-        String[] languages = findMaxString(languageArr);
-        mLog("languages:" + Arrays.toString(languages));
-
-        return Arrays.toString(languages);
+        return Utils.findMaxString(languageArr);
     }
 
-    //todo: 统计出现频率最高的语言
-    public static String[] findMaxString(String[] arr) {
-
-        Map<Integer, String> map = new HashMap<Integer, String>();
-        for (int i = 0; i < arr.length - 1; i++) {
-            int count = 0;
-            String temp = null;
-            for (int j = i + 1; j < arr.length; j++) {
-
-                if (arr[i].equals(arr[j])) {
-
-                    count++;
-                    temp = arr[i];
-                }
-
-
-            }
-//从第一个字符开始比较，每次比较完成后，将相同字符的数目和字符储存在map中
-            map.put(count + 1, temp);
-
-
-        }
-
-        int[] countArr = new int[map.size()];
-        for (int c : map.keySet()) {
-
-            for (int i = 0; i < map.size(); i++) {
-//将map集合的键存储在数组中
-                countArr[i] = c;
-            }
-        }
-
-        Arrays.sort(countArr);
-        int MAXCOUNT = countArr[countArr.length - 1];
-        String maxvalue = map.get(MAXCOUNT);
-        String[] maxString = new String[MAXCOUNT];
-        for (int i = 0; i < MAXCOUNT; i++) {
-            maxString[i] = maxvalue;
-        }
-        return maxString;
-    }
 
 }

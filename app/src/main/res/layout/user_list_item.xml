@@ -3,8 +3,9 @@
     xmlns:fresco="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:orientation="horizontal"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:background="#eeeeee"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/user_name"
@@ -14,16 +15,18 @@
         android:layout_gravity="center"
         android:text="@string/user_name" />
 
-    <!--<com.facebook.drawee.view.SimpleDraweeView-->
-    <!--android:id="@+id/my_avatar"-->
-    <!--android:layout_width="40dp"-->
-    <!--android:layout_height="40dp"-->
-    <!--android:layout_gravity="center"-->
-    <!--fresco:failureImage="@mipmap/default_avatar"-->
-    <!--fresco:failureImageScaleType="centerCrop"-->
-    <!--fresco:placeholderImage="@mipmap/default_avatar"-->
-    <!--fresco:placeholderImageScaleType="centerCrop"-->
-    <!--fresco:roundedCornerRadius="100dp" />-->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/user_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toEndOf="@+id/user_name"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"
+        fresco:failureImage="@mipmap/default_avatar"
+        fresco:failureImageScaleType="centerCrop"
+        fresco:placeholderImage="@mipmap/default_avatar"
+        fresco:placeholderImageScaleType="centerCrop"
+        fresco:roundedCornerRadius="100dp" />
 
     <TextView
         android:id="@+id/language"
