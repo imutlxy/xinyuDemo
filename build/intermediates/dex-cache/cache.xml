@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/gaohuang/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.4/695b63d702f505b9b916e02272e3b6381bade7f/gson-2.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
+        <dex dex="/Users/gaohuang/lxy/demo/app/build/intermediates/pre-dexed/debug/gson-2.4-b3524c487e2f88e73fd10446524c908ab0860521.jar" />
+    </item>
+    <item
+        jar="/Users/gaohuang/lxy/demo/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.1/jars/libs/internal_impl-24.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="f78c2f395cb096f9dc1dc07e729922b8fcd3c4f5">
+        <dex dex="/Users/gaohuang/lxy/demo/app/build/intermediates/pre-dexed/debug/internal_impl-24.1.1-877972479bf93c6f7a813338df20d4d83b70fd84.jar" />
+    </item>
+    <item
+        jar="/Users/gaohuang/lxy/demo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1256c10604bb098490eab070d76754ac5ceab35c">
+        <dex dex="/Users/gaohuang/lxy/demo/app/build/intermediates/pre-dexed/debug/classes-04c49d80eebc578d24261e4db0002a3adf6c134c.jar" />
+    </item>
+    <item
+        jar="/Users/gaohuang/lxy/demo/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6d7d803871e3203465f71a163e7af104f807b446">
+        <dex dex="/Users/gaohuang/lxy/demo/app/build/intermediates/pre-dexed/debug/classes-89feddfb9128d7af8ef4941f96cdc0cbe5116f73.jar" />
+    </item>
+    <item
+        jar="/Users/gaohuang/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="/Users/gaohuang/lxy/demo/app/build/intermediates/pre-dexed/debug/httpclient-4.3.6-466de3050d48da2fb4e889d94b107b3a19dc4e2f.jar" />
+    </item>
+    <item
+        jar="/Users/gaohuang/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/24.1.1/3af19f153122737b372622fa6c81dd11a1c6b999/support-annotations-24.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3af19f153122737b372622fa6c81dd11a1c6b999">
+        <dex dex="/Users/gaohuang/lxy/demo/app/build/intermediates/pre-dexed/debug/support-annotations-24.1.1-7b63030a50d79b02b5e031c2cf54385f731e9696.jar" />
+    </item>
+    <item
+        jar="/Users/gaohuang/lxy/demo/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="f62e763609f65e47dc6c498760a4accf02776788">
+        <dex dex="/Users/gaohuang/lxy/demo/app/build/intermediates/pre-dexed/debug/classes-280d74c35710d6a2a83fe0d57f50e6f12f265fd2.jar" />
+    </item>
+    <item
+        jar="/Users/gaohuang/lxy/demo/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c936c1bd42f0c018c18920c7bec619ef056b24f8">
+        <dex dex="/Users/gaohuang/lxy/demo/app/build/intermediates/pre-dexed/debug/classes-7f19932e4144240e61d1177afcc969c6d3582568.jar" />
+    </item>
+    <item
+        jar="/Users/gaohuang/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="/Users/gaohuang/lxy/demo/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9-724f0799b0854b60cfe6d3b461e11a73412705d1.jar" />
+    </item>
+    <item
+        jar="/Users/gaohuang/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/Users/gaohuang/lxy/demo/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1-35f3e0f0b9b00daadd039c29e5faac9b0e675201.jar" />
+    </item>
+
+</items>
